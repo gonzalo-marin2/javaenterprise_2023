@@ -16,13 +16,18 @@ public class BuscadorService {
 			));
 	
 	public List<Resultado> buscar(String tematica){
-		ArrayList<Resultado> encontrados=new ArrayList<>();
+		/*ArrayList<Resultado> encontrados=new ArrayList<>();
 		for(Resultado r:resultados) {
 			if(r.getTematica().equals(tematica)) {
 				encontrados.add(r);
 			}
 		}
-		return encontrados;
+		return encontrados;*/
+		
+		//PROGRAMACIÓN FUNCIONAL
+		return resultados.stream()
+				.filter(r->r.getTematica().equals(tematica))
+				.toList();
 	}
 	
 }
