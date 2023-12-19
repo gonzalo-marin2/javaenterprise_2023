@@ -18,7 +18,6 @@ public class TablaNumero extends HttpServlet {
 		PrintWriter out=response.getWriter();
 		response.setContentType("text/html");
 		out.println("<html><body><center>");
-		out.println("<html><body><center>");
 		out.println("<h1>Tabla del "+numero+"</h1>");
 		out.println("<table border='1'>");
 		for(int i=1;i<=10;i++) {
