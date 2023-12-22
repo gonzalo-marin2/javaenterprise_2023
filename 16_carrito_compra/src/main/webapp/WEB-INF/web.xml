@@ -3,8 +3,5 @@
   <display-name>16_carrito_compra</display-name>
   <welcome-file-list>
     <welcome-file>menu.html</welcome-file>
-  </welcome-file-list>
-  <session-config>
-    <session-timeout>5</session-timeout>
-  </session-config>
+  </welcome-file-list>  
 </web-app>

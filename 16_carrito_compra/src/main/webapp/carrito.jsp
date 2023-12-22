@@ -8,6 +8,7 @@
 </head>
 <body>
 	<h1>Productos que hay en el carrito</h1>
+	<a href="CerrarSesionServlet">Cerrar sesión</a>
 <%List<Producto> carrito=(List<Producto>)session.getAttribute("carrito");
 	if(carrito!=null){%>
 		<table border="1">
