@@ -9,7 +9,7 @@
 <body>
 
 	<center>
-		<%--Recogemos la cookie --%>
+		<%--Recogemos la cookie que viene del cliente --%>
 		<%String fecha="Primera visita";
 		Cookie[] cookies=request.getCookies();
 		if(cookies!=null){
