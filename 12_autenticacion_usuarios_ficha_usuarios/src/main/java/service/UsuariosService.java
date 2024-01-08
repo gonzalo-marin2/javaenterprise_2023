@@ -3,6 +3,7 @@ package service;
 import java.util.ArrayList;
 import java.util.List;
 
+import jakarta.servlet.Filter;
 import model.Ficha;
 import model.Usuario;
 
@@ -41,6 +42,12 @@ public class UsuariosService {
 			}
 		}
 		return null;
+		
+		//PROGRAMACION FUNCIONAL
+		/*return fichas.stream()//Stream<Ficha>
+		Filter(f->f.getUsuario().equals(usuario))//Stream<Ficha>;
+		.findFirst()//Optional<Ficha>
+		.orElse(null);*/
 	}
 	
 	
