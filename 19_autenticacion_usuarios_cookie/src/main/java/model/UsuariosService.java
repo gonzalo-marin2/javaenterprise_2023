@@ -1,11 +1,9 @@
-package service;
+package model;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.swing.JOptionPane;
-
-import model.Usuario;
 
 public class UsuariosService {
 	List<Usuario> usuarios=new ArrayList<>(List.of(
