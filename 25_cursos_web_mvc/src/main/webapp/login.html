@@ -11,13 +11,12 @@
 </head>
 <body>
 	<center>
-		<form action="Login">
+		<form action="FrontController?operation=doLogin" method="post">
 		<h2>Log in</h2>
 		<div>
-			<input type="text" name="usuario" placeholder="Ingrese su usuario" />
-			<input type="password" name="password" placeholder="Ingrese su contraseña" />
+			Usuario:<input type="text" name="usuario" placeholder="Ingrese su usuario" />
+			Password:<input type="password" name="password" placeholder="Ingrese su contraseña" />
 			<input type="submit" value="Entrar" />
-			<input type="checkbox" name="recordar" value="1">Recordar
 		</div>
 	</form> 
 	</center>

@@ -28,6 +28,16 @@ public class FrontController extends HttpServlet {
 				request.getRequestDispatcher("EliminarController").include(request, response);
 				urlView="menu.html";
 				break;
+			case "doLogin":
+				request.getRequestDispatcher("LoginController").include(request, response);
+				/*if((Boolean)request.getAttribute("autenticado")) {//si es true, vamos a menu.html
+					urlView="menu.html";
+				}else {
+					urlView="error.html";
+				}*/
+				//con operador ternario
+				urlView=(Boolean)request.getAttribute("autenticado")?"menu.html":"error.jsp";
+				break;
 			case "toNuevo":
 				urlView="nuevo.html";
 				break;
@@ -40,15 +50,8 @@ public class FrontController extends HttpServlet {
 			case "toMenu":
 				urlView="menu.html";
 				break;
-			case "doAutenticar":
-				request.getRequestDispatcher("LoginController").include(request, response);
+			case "toLogin":
 				urlView="login.html";
-				break;
-			case "toAutenticar":
-				urlView="login.html";
-				break;
-			case "toError":
-				urlView="error.html";
 				break;
 		}
 		
