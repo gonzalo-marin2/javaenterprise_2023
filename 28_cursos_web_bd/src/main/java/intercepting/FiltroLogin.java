@@ -35,15 +35,19 @@ public class FiltroLogin extends HttpFilter implements Filter {
 		if(usuario!=null) {
 			//pass the request along the filter chain
 			chain.doFilter(request, response);
+			return;
 		}else {
 			//obtenemos la dirección de entrada y el valor del parámetro operation
 			//String path=((HttpServletRequest)request).getServletPath();//nos da la dirección de la url
 			String param=((HttpServletRequest)request).getParameter("operation");//nos da el valor del parámetro operation
 			if(param!=null&&param.equals("doLogin")) {
 				chain.doFilter(request, response);
+				return;
+			}else {
+				//le enviamos a login.html si no existe
+				request.getRequestDispatcher("login.html").forward(request, response);
 			}
-			//le enviamos a login.html si no existe
-			request.getRequestDispatcher("login.html").forward(request, response);
+			
 		}
 		
 	}
