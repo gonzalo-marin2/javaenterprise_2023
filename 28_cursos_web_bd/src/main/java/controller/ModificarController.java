@@ -16,7 +16,7 @@ public class ModificarController extends HttpServlet {
 	
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		CursosService service=new CursosService();
-		service.modificarDuracion(request.getParameter("nombre"), Integer.parseInt(request.getParameter("duracion")));
+		service.modificarDuracion(request.getParameter("nombre"), Integer.parseInt(request.getParameter("nuevaDuracion")));
 	}
 
 }
