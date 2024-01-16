@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+	.grande{
+		color:blue;
+		font-weight: 900;
+		font-size: 40px;
+	}
+	.peque{
+		color:grey;
+		font-weight: 100;
+		font-size: 10px;
+	}
+</style>
+</head>
+<body>
+	
+	<h1>Cambio de estilo en párrafos</h1>
+	
+	<p class="peque" onmouseover="modificarEstilo(this,'grande')" onmouseout="modificarEstilo(this,'peque')">Texto primero</p>
+	<p class="peque" onmouseover="modificarEstilo(this,'grande')" onmouseout="modificarEstilo(this,'peque')">Texto segundo</p>
+	<p class="peque" onmouseover="modificarEstilo(this,'grande')" onmouseout="modificarEstilo(this,'peque')">Texto tercero</p>
+
+	<script type="text/javascript">
+		function modificarEstilo(obj,estilo){
+			obj.className=estilo;
+		}
+		
+		
+	</script>
+</body>
+</html>

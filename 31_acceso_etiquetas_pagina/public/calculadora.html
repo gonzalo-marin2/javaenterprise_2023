@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<h1>Calculadora</h1>
+	Número 1:<input type="text" id="n1"><br><br>
+	Número 2:<input type="text" id="n2"><br><br>
+	<input type="button" value="sumar" onclick="sumar()">
+	<input type="button" value="multiplicar" onclick="multiplicar()">
+	<input type="button" value="dividir" onclick="dividir()">
+	<br><br>
+	<h1 id="res"></h1>
+
+	<script type="text/javascript">
+
+		function sumar(){
+			var n1=document.getElementById("n1").value;
+			var n2=document.getElementById("n2").value;
+			document.getElementById("res").innerText=parseInt(n1)+parseInt(n2);
+			resetear()
+		}
+
+		function multiplicar(){
+			var n1=document.getElementById("n1").value;
+			var n2=document.getElementById("n2").value;
+			if(n1==0 || n2==0){
+				alert("Cualquier número multiplicado por cero es cero")
+			}
+			document.getElementById("res").innerText=parseInt(n1)*parseInt(n2);
+			resetear()
+		}
+
+		function dividir(){
+			var n1=document.getElementById("n1").value;
+			var n2=document.getElementById("n2").value;
+			if(n2==0){
+				alert("No se puede dividir entre cero")
+			}
+			document.getElementById("res").innerText=parseInt(n1)/parseInt(n2);
+			resetear()
+		}
+
+		function resetear(){
+			document.getElementById("n1").value="";
+			document.getElementById("n2").value="";
+		}
+
+
+		
+		
+		
+		
+	</script>
+
+</body>
+</html>
