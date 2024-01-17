@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+	
+	<h1>Manipular JSON</h1>
+	
+	<script text="text/javascript">
+		var curso={"nombre":"Java","duracion":100,"precio":120};
+		curso.duracion=80;
+		alert(curso.nombre);
+		//alternativa
+		var otroCurso=new Object();
+		otroCurso.nombre="Python";
+		otroCurso.duracion=60;
+		otroCurso.precio=80;
+		//representar json como cadena
+		console.log(JSON.stringify(otroCurso));
+		//convertir cadena a json
+		var emp='{"departamento":"ventas","salario":2000}';//aunque tenga estructura json,
+		//como va entre comillas simples, es una cadena de texto
+		console.log(emp.departamento);//dará undefined
+		emp=JSON.parse(emp);//así sí que se vería
+		console.log(emp.departamento);
+	</script>
+
+</body>
+</html>

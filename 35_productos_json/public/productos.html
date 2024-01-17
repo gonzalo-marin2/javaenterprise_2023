@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Productos JSON</title>
+</head>
+<body>
+	Nombre:<input type="text" id="nombre">
+	Categoría:<input type="text" id="categoria">
+	Precio:<input type="text" id="precio"><br>
+	<input type="button" value="Guardar" onclick="guardarProducto()">
+	<br>
+	<hr>
+	<br>
+	Categoría:<input type="text" id="cat">
+	<input type="button" value="Buscar" onclick="buscarPorCategoria()">
+	<br><br>
+	<div id="tabla">
+		
+	</div>
+	
+	<script ="text/javascript">
+		var productos=[];
+		function guardarProducto(){
+			var prod=new Object();
+			prod.nombre=document.getElementById("nombre").value;
+			prod.categoria=document.getElementById("categoria").value;
+			prod.precio=document.getElementById("precio").value;
+			productos.push(prod);
+			productos.forEach(p=>console.log(p));
+			resetear();
+		}
+		function buscarPorCategoria(){
+			var tabla="<table border='1'><tr><th>Nombre</th><th>Categoria</th><th>Precio</th></tr>";
+			productos.forEach(function(p){
+				if(p.categoria==document.getElementById("cat").value){
+					tabla+="<tr><td>"+
+					p.nombre+"</td><td>"+
+					p.categoria+"</td><td>"+
+					p.precio+"</td></tr>";
+				}
+			});
+			tabla+="</table>";
+			document.getElementById("tabla").innerHTML=tabla;
+		}
+		
+		function resetear(){
+			 document.getElementById("nombre").value="";
+			 document.getElementById("categoria").value="";
+			 document.getElementById("precio").value="";
+		}
+		
+	</script>
+
+</body>
+</html>
