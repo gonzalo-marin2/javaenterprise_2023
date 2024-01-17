@@ -35,14 +35,40 @@ input {
 <body>
 	<div>
 		<h1>Agregar nuevo curso</h1>
-		<form action="FrontController?operation=doGuardar" method="post">
-			Nombre curso:<input type="text" name="nombre" placeholder="Nombre del curso">
-			Duracion curso<input type="text" name="duracion" placeholder="Duracion del curso"> 
-			Precio curso:<input type="text" name="precio" placeholder="Precio del curso"> 
+		<form action="FrontController?operation=doGuardar" onsubmit="return validar()" method="post">
+			Nombre curso:<input type="text" name="nombre" id="nombre" placeholder="Nombre del curso">
+			Duracion curso<input type="text" name="duracion" id="duracion" placeholder="Duracion del curso"> 
+			Precio curso:<input type="text" name="precio" id="precio" placeholder="Precio del curso"> 
 			<input type="submit" value="Guardar">
 		</form>
 	</div>
 	<a href="FrontController?operation=toMenu">Volver</a>
 
+	<script type="text/javascript">
+		function validar(){
+			
+			let nombre=document.getElementById("nombre").value;
+			let duracion=document.getElementById("duracion").value;
+			let precio=document.getElementById("precio").value;
+			if(isNaN(duracion)||isNaN(precio)){
+				alert("Tanto la duración como el precio deben de ser numéricos");
+				return false;
+			}
+			if(nombre.includes("php")){
+				alert("No se admiten cursos de php");
+				return false;
+			}
+			if(duracion<=0 || precio<=0){
+				alert("Los números deben ser mayores de cero");
+				return false;
+			}
+			if(duracion.includes(".") || duracion.includes(",")){
+				alert("La duración debe ser un número entero, no decimal");
+				return false;
+			}
+			//si no se cumple ninguna condición, devuelve true
+			return true;
+		}
+	</script>
 </body>
 </html>
