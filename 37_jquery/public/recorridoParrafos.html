@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+</head>
+<body>
+
+	<p>Párrafo 1</p>
+	<p>Párrafo 2</p>
+	<p>Párrafo 3</p>
+	<br>
+	<input type="button" value="negrita" id="btnNegrita">
+	
+	<script type="text/javascript">
+		$("#btnNegrita").click(negrita);
+		function negrita(){
+			//versión jquery del bucle for
+			/*$.each($("p"), function(i,e){//i es la posición o índice, e es el objeto
+			e.style.fontWeight="Bold";*/
+			//para poner en negrita los que tengan una posición par en el array:
+			/*if(i%2==0){
+				e.style.fontWeight="Bold";
+			});*/
+			
+			//OTRA FORMA DE USAR EACH
+			$("p").each(function(){
+				$(this).css("font-weight","Bold");
+			});
+			
+		}
+	</script>
+	
+</body>
+</html>

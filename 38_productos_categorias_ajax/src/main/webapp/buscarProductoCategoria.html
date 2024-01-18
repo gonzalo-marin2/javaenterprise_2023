@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="Expires" content="0">
+<meta http-equiv="Last-Modified" content="0">
+<meta http-equiv="Cache-Control" content="no-cache, mustrevalidate">
+<meta http-equiv="Pragma" content="no-cache"> 
+<title>Lista de productos por categoría</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+</head>
+<body>
+	
+	<div>
+		<h1>Lista de productos por categoría</h1>
+			<input type="text" name="categoria" id="categoria"
+				placeholder="Categoría del producto"> <input type="button" id="btnMostrar"
+				value="Mostrar"> <br><br>
+			<div id="tbProductos">
+				
+			</div>	
+		
+	</div>
+	<a href="inicio.html">Volver</a>
+	
+	<script type="text/javascript">
+		$("#btnMostrar").click(lanzarPeticion);
+		function lanzarPeticion(){
+			//var url="FrontController?operation=doBuscarProductoCategoria&categoria="+$("#categoria").val();
+			var url="FrontController";
+			//ahora los parámetros los montamos en la propia llamada en vez de en la url en forma de json
+			$.get(url,{"operation":"doBuscarProductoCategoria","categoria":$("#categoria").val()},function(data){//el parámetro data contiene el json de respuesta
+				var tabla="<table border='1'><tr><th>Nombre</th><th>Precio</th></tr>";
+				//recorremos el json montando la tabla
+				$.each(data,function(i,p){
+					tabla+="<tr><td>"+p.nombre+"</td><td>"+p.precio+"</td></tr>";
+				});
+				tabla+="</table>";
+				//volcamos la tabla en el div de productos
+				$("#tbProductos").html(tabla);
+			});
+		}
+	</script>
+
+</body>
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Productos JSON</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+</head>
+<body>
+	Nombre:<input type="text" id="nombre">
+	Categoría:<input type="text" id="categoria">
+	Precio:<input type="text" id="precio"><br>
+	<input type="button" value="Guardar" id="btnGuardar">
+	<br>
+	<hr>
+	<br>
+	Categoría:<input type="text" id="cat">
+	<input type="button" value="Buscar" id="btnBuscarCategoria">
+	<br><br>
+	<div id="tabla">
+		
+	</div>
+	
+	<script ="text/javascript">
+		$("#btnGuardar").click(guardarProducto);
+		$("#btnBuscarCategoria").click(buscarPorCategoria);
+		
+		var productos=[];
+		function guardarProducto(){
+			var producto=new Object();
+			producto.nombre=$("#nombre").val();
+			producto.categoria=$("#categoria").val();
+			producto.precio=$("#precio").val();
+			productos.push(producto);
+			resetear();
+		}
+		function buscarPorCategoria(){
+			var tabla="<table border='1'><tr><th>Nombre</th><th>Categoria</th><th>Precio</th></tr>";
+			/*productos.forEach(function(p){
+				if(p.categoria==document.getElementById("cat").value){
+					tabla+="<tr><td>"+
+					p.nombre+"</td><td>"+
+					p.categoria+"</td><td>"+
+					p.precio+"</td></tr>";
+				}
+			});*/
+			$.each(productos,function(i,p){
+				if(p.categoria==$("#cat").val()){
+					tabla+="<tr><td>"+
+					p.nombre+"</td><td>"+
+					p.categoria+"</td><td>"+
+					p.precio+"</td></tr>";
+				}
+			});
+			tabla+="</table>";
+			$("#tabla").html(tabla);
+		}
+		
+		function resetear(){
+			 $("#nombre").val("");
+			 $("#categoria").val("");
+			 $("#precio").val("");
+		}
+		
+	</script>
+
+</body>
+</html>

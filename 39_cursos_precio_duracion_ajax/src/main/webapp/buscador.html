@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Buscador de cursos</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+</head>
+<body>
+	
+	<h1>Buscador de cursos</h1>
+	<div>
+		<input type="radio" name="rb" id="btnPrecio">Por precio<br><br>
+		<input type="radio" name="rb" id="btnDuracion">Por duracion<br><br>
+	</div>
+		
+	<div id="BuscarCursosPrecio">
+		Precio Máximo:<input type="text" name="precio" id="precio">
+		<input type="button" id="btnBuscarPrecio" value="Buscar">
+	</div>
+	
+
+	<div id="BuscarCursosDuracion">
+		Duración Mínima:<input type="text" name="durMinima" id="durMinima">
+		Duración Máxima:<input type="text" name="durMaxima" id="durMaxima">
+		<input type="button" id="btnBuscarPrecio" value="Buscar">
+
+	</div>
+
+
+	
+	
+	<script type="text/javascript">
+		$("#btnPrecio").click(function(){
+			$("#BuscarCursosDuracion").hide();
+		});
+		$("#btnPrecio").click(mostrarBuscadorPrecio);
+		$("#btnDuracion").click(mostrarBuscadorDuracion);
+		
+		function Precio(){
+			var url="FrontController";
+			$.get(url,{"operation":"doBuscarPorPrecio","nombre":$("#"))
+		}
+		
+	</script>
+	
+</body>
+</html>
