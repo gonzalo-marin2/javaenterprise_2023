@@ -21,7 +21,7 @@ public class BuscarPorPrecioController extends HttpServlet {
 	
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		CursosService service=new CursosService();
-		List<Curso> cursos=service.preciosCursoMax(Double.parseDouble(request.getParameter("precio")));
+		List<Curso> cursos=service.preciosCursoMax(Double.parseDouble(request.getParameter("precioMax")));
 		PrintWriter out=response.getWriter();
 		response.setContentType("application/json");
 		Gson gson=new Gson();

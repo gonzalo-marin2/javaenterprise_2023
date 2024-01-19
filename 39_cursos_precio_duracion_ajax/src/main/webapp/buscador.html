@@ -5,41 +5,98 @@
 <title>Buscador de cursos</title>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 </head>
-<body>
+<body id="pagina" onload="ocultar()";>
 	
 	<h1>Buscador de cursos</h1>
 	<div>
-		<input type="radio" name="rb" id="btnPrecio">Por precio<br><br>
-		<input type="radio" name="rb" id="btnDuracion">Por duracion<br><br>
+		<input type="radio" name="rb" id="rbPrecio">Por precio<br><br>
+		<input type="radio" name="rb" id="rbDuracion">Por duracion<br><br>
 	</div>
 		
 	<div id="BuscarCursosPrecio">
-		Precio Máximo:<input type="text" name="precio" id="precio">
+		Precio Máximo:<input type="text" name="precioMax" id="precioMax">
 		<input type="button" id="btnBuscarPrecio" value="Buscar">
 	</div>
 	
-
 	<div id="BuscarCursosDuracion">
 		Duración Mínima:<input type="text" name="durMinima" id="durMinima">
 		Duración Máxima:<input type="text" name="durMaxima" id="durMaxima">
-		<input type="button" id="btnBuscarPrecio" value="Buscar">
-
+		<input type="button" id="btnBuscarDuracion" value="Buscar">
 	</div>
-
-
 	
-	
+	<div id="tbDatos"></div>
+
 	<script type="text/javascript">
-		$("#btnPrecio").click(function(){
+		function ocultar(){
 			$("#BuscarCursosDuracion").hide();
-		});
-		$("#btnPrecio").click(mostrarBuscadorPrecio);
-		$("#btnDuracion").click(mostrarBuscadorDuracion);
-		
-		function Precio(){
-			var url="FrontController";
-			$.get(url,{"operation":"doBuscarPorPrecio","nombre":$("#"))
+    		$("#BuscarCursosPrecio").hide();
 		}
+		//ocultar secciones cuando marcamos un botón
+		$(document).ready(function(){
+  			$("#rbPrecio").click(function(){
+    			$("#BuscarCursosDuracion").hide();
+    			$("#BuscarCursosPrecio").show();
+    			$("#tbDatos").hide();
+    			
+  			});
+		});
+	
+		$(document).ready(function(){
+  			$("#rbDuracion").click(function(){
+    			$("#BuscarCursosPrecio").hide();
+    			$("#BuscarCursosDuracion").show();
+    			$("#tbDatos").hide();
+  			});
+		});
+		
+		$("#btnBuscarPrecio").click(precio);
+		$("#btnBuscarDuracion").click(duracion);
+		
+		function precio(){
+			$("#tbDatos").show();
+			var url="FrontController";
+			$.get(url,{"operation":"doBuscarPorPrecio","precioMax":$("#precioMax").val()},function(data){
+			var tabla="<table border='1'><tr><th>Nombre</th><th>Precio</th><th>Duracion</th></tr>";
+			$.each(data, function(i,c){
+			tabla+="<tr><td>"+c.nombre+"</td><td>"+c.precio+"</td><td>"+c.duracion+"</td></tr>";
+			});
+			tabla+="</table>";
+			$("#tbDatos").html(tabla);
+		});
+	}
+	
+		function duracion(){
+			$("#tbDatos").show();
+			var url="FrontController";
+			$.get(url,{"operation":"doBuscarPorDuracion","minimo":$("#durMinima").val(),"maximo":$("#durMaxima").val()},function(data){
+			var tabla="<table border='1'><tr><th>Nombre</th><th>Precio</th><th>Duracion</th></tr>";
+			$.each(data, function(i,c){
+			tabla+="<tr><td>"+c.nombre+"</td><td>"+c.precio+"</td><td>"+c.duracion+"</td></tr>";
+			});
+			tabla+="</table>";
+			$("#tbDatos").html(tabla);
+		});
+	}
+	
+	//otra solución
+	/*$("#btnBuscarPrecio").click(function(){
+		var url="FrontController";
+		var params={"operation":"doBuscarPorPrecio","precio":$("#precioMax").val()};
+		gestionarPeticion(url,params);
+	});*/
+	
+	//con la solución alternativa, usamos tb esta función
+	/*function gestionarPeticion(url,params){
+			$("#tbDatos").show();
+			$.get(url,params,function(data){
+				var tabla="<table border='1'><tr><th>Nombre</th><th>Duración</th><th>Precio</th></tr>";
+				$.each(data,function(i,p){
+					tabla+="<tr><td>"+p.nombre+"</td><td>"+p.duracion+"</td><td>"+p.precio+"</td></tr>";
+				});
+				tabla+="</table>";
+				$("#tablaDatos").html(tabla);
+			});*/
+	
 		
 	</script>
 	
