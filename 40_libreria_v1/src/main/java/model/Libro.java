@@ -10,17 +10,16 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity
-@Table(name = "temas")
+@Table(name = "libros")
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
 public class Libro {
+	@Id
 	private int isbn;
 	private String titulo;
 	private String autor;
 	private double precio;
 	private int paginas;
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int idTema;
 }

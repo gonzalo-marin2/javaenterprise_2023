@@ -22,9 +22,9 @@ public class FrontController extends HttpServlet {
 			urlView="visor.jsp";
 			break;
 		case "doLibrosPorTema":
-			request.getRequestDispatcher("LibrosPorTemaController").include(request, response);
-			urlView="visor.jsp";
-			break;
+			request.getRequestDispatcher("LibrosPorTemaController").forward(request, response);
+			//en peticiones ajax es forward, la respuesta la hace el servlet controlador
+			return;
 		}
 		request.getRequestDispatcher(urlView).forward(request, response);
 	}
