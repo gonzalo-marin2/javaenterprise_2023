@@ -22,10 +22,10 @@ public class LibrosService {
 	}
 	
 	public List<Libro> getLibrosPorTema(int idTema){
-		String jpql="select l from Libro l ";
+		String jpql="select l from Libro l";
 		TypedQuery<Libro> query;
 		if(idTema!=0) {
-			jpql+="where l.idTema=?1";
+			jpql+=" where l.idTema=?1";
 			query=getEntityManager().createQuery(jpql, Libro.class);
 			query.setParameter(1, idTema);
 		}else {
