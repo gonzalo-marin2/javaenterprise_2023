@@ -1,7 +1,8 @@
-package service;
+package service.interfaces;
 
 import java.util.List;
 
+import dtos.ClienteDto;
 import dtos.LibroDto;
 import dtos.TemaDto;
 

@@ -17,7 +17,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import model.Libro;
-import service.LibrosService;
+import service.interfaces.LibrosService;
 
 @WebServlet("/EliminarController")
 public class EliminarController extends HttpServlet {

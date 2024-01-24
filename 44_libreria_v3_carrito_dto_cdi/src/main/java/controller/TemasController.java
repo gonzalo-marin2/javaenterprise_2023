@@ -11,7 +11,7 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import model.Tema;
-import service.LibrosService;
+import service.interfaces.LibrosService;
 
 @WebServlet("/TemasController")
 public class TemasController extends HttpServlet {

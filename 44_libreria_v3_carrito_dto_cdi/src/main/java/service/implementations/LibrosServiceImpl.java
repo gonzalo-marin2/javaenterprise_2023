@@ -1,8 +1,9 @@
-package service;
+package service.implementations;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import dtos.ClienteDto;
 import dtos.LibroDto;
 import dtos.TemaDto;
 import jakarta.inject.Named;
@@ -10,8 +11,10 @@ import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.Persistence;
 import jakarta.persistence.TypedQuery;
+import model.Cliente;
 import model.Libro;
 import model.Tema;
+import service.interfaces.LibrosService;
 import service.mappers.Mapeador;
 
 //si tuviéramos varias implementaciones, necesitaríamos la anotación @Named
@@ -73,4 +76,5 @@ public class LibrosServiceImpl implements LibrosService {
 	public TemaDto getTema(int idTema) {
 		return Mapeador.temaEntityToDto(getEntityManager().find(Tema.class, idTema));
 	}
+	
 }

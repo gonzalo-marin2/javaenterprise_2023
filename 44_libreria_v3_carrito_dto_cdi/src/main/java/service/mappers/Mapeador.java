@@ -1,11 +1,13 @@
 package service.mappers;
 
+import dtos.ClienteDto;
 import dtos.LibroDto;
 import dtos.TemaDto;
+import model.Cliente;
 import model.Libro;
 import model.Tema;
-import service.LibrosService;
-import service.LibrosServiceImpl;
+import service.implementations.LibrosServiceImpl;
+import service.interfaces.LibrosService;
 
 public class Mapeador {
 	
@@ -21,5 +23,21 @@ public class Mapeador {
 				libro.getPrecio(),
 				libro.getPaginas(),
 				service.getTema(libro.getIdTema()));
+	}
+	
+	public static ClienteDto clienteEntityToDto(Cliente cliente) {
+		return new ClienteDto(
+				cliente.getUsuario(),
+				cliente.getPassword(),
+				cliente.getEmail(),
+				cliente.getTelefono());
+	}
+	
+	public static Cliente clienteDtoToEntity(ClienteDto cliente) {
+		return new Cliente(0,
+				cliente.getUsuario(),
+				cliente.getPassword(),
+				cliente.getEmail(),
+				cliente.getTelefono());
 	}
 }
