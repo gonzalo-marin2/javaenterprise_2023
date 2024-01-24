@@ -17,6 +17,16 @@ public class FrontController extends HttpServlet {
 		String operation=request.getParameter("operation");
 		String urlView="";
 		switch(operation) {
+		case "doLogin":
+			request.getRequestDispatcher("LoginController").include(request, response);
+			boolean autenticado=(boolean)request.getAttribute("autenticado");
+			if(!autenticado) {
+				urlView="login.html";
+				break;
+			}
+			//si está autenticado, debe hacer lo que se indica en el caso doTemas
+			//por lo que no necesitamos el break, entra directamente en doTemas
+			//nos ahorramos código
 		case "doTemas":
 			request.getRequestDispatcher("TemasController").include(request, response);
 			urlView="visor.jsp";
@@ -31,18 +41,12 @@ public class FrontController extends HttpServlet {
 		case "doEliminar":
 			request.getRequestDispatcher("EliminarController").forward(request, response);
 			return;
-		case "doLogin":
-			request.getRequestDispatcher("LoginController").forward(request, response);
-			return;
 		case "doAlta":
 			request.getRequestDispatcher("AltaClienteController").include(request, response);
-			urlView="inicio.html";
-			return;
-		case "toLogin":
-			urlView="visor.jsp";
-			return;
-		case "toAlta":
-			urlView="alta.html";
+			urlView="login.html";
+			break;
+		case "toNuevo":
+			urlView="nuevo.html";
 			return;
 			
 		}
