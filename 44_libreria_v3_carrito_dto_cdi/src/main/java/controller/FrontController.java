@@ -31,6 +31,20 @@ public class FrontController extends HttpServlet {
 		case "doEliminar":
 			request.getRequestDispatcher("EliminarController").forward(request, response);
 			return;
+		case "doLogin":
+			request.getRequestDispatcher("LoginController").forward(request, response);
+			return;
+		case "doAlta":
+			request.getRequestDispatcher("AltaClienteController").include(request, response);
+			urlView="inicio.html";
+			return;
+		case "toLogin":
+			urlView="visor.jsp";
+			return;
+		case "toAlta":
+			urlView="alta.html";
+			return;
+			
 		}
 		request.getRequestDispatcher(urlView).forward(request, response);
 	}

@@ -19,14 +19,15 @@ public class LoginController extends HttpServlet {
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		//recogemos el resultado en una variable para poder preguntar después
-		ClienteDto result=service.autenticarCliente(request.getParameter("usuario"), request.getParameter("password"));
+		ClienteDto dto=service.autenticarCliente(request.getParameter("usuario"), request.getParameter("password"));
 		//el resultado de la autenticación lo guardamos en un atributo de petición
 		//para que lo pueda utilizar el front controller
-		request.setAttribute("autenticado", result);
+		request.setAttribute("autenticado", dto!=null);
+		
 		//si el usuario está autenticado, lo guardamos en un atributo de sesión
-		if(result!=null) {
+		/*if(dto!=null) {
 			request.getSession().setAttribute("usuario", request.getParameter("usuario"));
-		}	
+		}*/	
 	}
 
 }
