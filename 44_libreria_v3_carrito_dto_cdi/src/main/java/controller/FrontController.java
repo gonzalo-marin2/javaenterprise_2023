@@ -47,7 +47,7 @@ public class FrontController extends HttpServlet {
 			break;
 		case "toNuevo":
 			urlView="nuevo.html";
-			return;
+			break;
 			
 		}
 		request.getRequestDispatcher(urlView).forward(request, response);
